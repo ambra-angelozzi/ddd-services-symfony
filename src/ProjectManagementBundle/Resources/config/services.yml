@@ -1,0 +1,12 @@
+services:
+#    project_management.example:
+#        class: ProjectManagementBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    project_service:
+      class: BestInvestmentsLtd\ProjectManagement\Service\Application\ProjectService
+      arguments:
+        - "@project_repository"
+
+    project_repository:
+      class: BestInvestmentsLtd\ProjectManagement\Project\FileBasedProjectRepository

@@ -1,0 +1,13 @@
+api_homepage:
+    path:     /
+    defaults: { _controller: ApiBundle:Default:index }
+
+api_draft_project:
+    path:     /project/draft
+    methods:  [GET]
+    defaults: {_controller: ApiBundle:Default:draftProject}
+
+api_start_project:
+    path:     /project/{reference}/start/{managerId}
+    methods:  [GET]
+    defaults: {_controller: ApiBundle:Default:startProject}
