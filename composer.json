@@ -5,8 +5,7 @@
     "autoload": {
         "psr-4": {
             "": "src/",
-            "BestInvestmentsLtd\\ProjectManagement\\": "src/ProjectManagement"
-            "BestInvestmentsLtd\\Client\\": "src/Client"
+            "BestInvestmentsLtd\\": "src/BestinvestmentsLtd/"
         },
         "classmap": [
             "app/AppKernel.php",
