@@ -5,7 +5,7 @@
     "autoload": {
         "psr-4": {
             "": "src/",
-            "BestInvestmentsLtd\\": "src/BestinvestmentsLtd/"
+            "BestInvestmentsLtd\\": "vendor/stuartp4l/BestinvestmentsLtd/"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -28,12 +28,19 @@
         "symfony/polyfill-apcu": "^1.0",
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+        "stuartp4l/BestinvestmentsLtd": "dev-master as 1.0.0-stable"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
     },
+    "repositories": [
+        {
+            "type":"vcs",
+            "url": "git@github.com:stuartp4l/BestinvestmentsLtd.git"
+        }
+    ],
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
