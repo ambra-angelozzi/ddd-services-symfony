@@ -2,12 +2,13 @@
 
 namespace ApiBundle\Controller;
 
+use ApiBundle\GenericCommand\Command;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
+
     public function indexAction()
     {
         return $this->render('ApiBundle:Default:index.html.twig');
@@ -15,13 +16,14 @@ class DefaultController extends Controller
 
     public function draftProjectAction(Request $request)
     {
-        $projectService = $this->container->get("project_service");
-        $projectService->draftProject(
-            $request->get("name"),
-            $request->get("deadline"),
-            $request->get("client_id")
-        );
+        $dispatcher = $this->container->get("event_dispatcher");
+        $command = new Command("draft_project", [
+                'name' => $request->get("name"),
+                'deadline' => $request->get("deadline"),
+                'clientId' => $request->get("client_id")
+            ]);
 
+        $dispatcher->dispatch($command->getName(), $command);
         return new Response("{}");
     }
 }

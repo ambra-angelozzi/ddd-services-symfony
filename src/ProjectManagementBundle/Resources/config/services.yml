@@ -4,9 +4,23 @@ services:
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
 
     project_service:
-      class: BestInvestmentsLtd\Service\Application\ProjectService
+      class: BestInvestmentsLtd\ProjectManagement\Service\Application\ProjectService
       arguments:
         - "@project_repository"
 
     project_repository:
       class: BestInvestmentsLtd\ProjectManagement\Project\FileBasedProjectRepository
+
+    draft_project_handler:
+      class: BestInvestmentsLtd\ProjectManagement\Service\Application\Handler\DraftProjectCommandHandler
+      arguments:
+        - "@project_repository"
+      tags:
+        - { name: kernel.event_listener, event: draft_project, method: handle }
+
+    start_project_handler:
+      class: BestInvestmentsLtd\ProjectManagement\Service\Application\Handler\StartProjectCommandHandler
+      arguments:
+        - "@project_repository"
+      tags:
+        - { name: kernel.event_listener, event: start_project, method: handle }
