@@ -4,7 +4,7 @@ services:
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
 
     project_service:
-      class: BestInvestmentsLtd\ProjectManagement\Service\Application\ProjectService
+      class: BestInvestmentsLtd\Service\Application\ProjectService
       arguments:
         - "@project_repository"
 
